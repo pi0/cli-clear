@@ -14,7 +14,7 @@ function clear()
 	}
 	else
 	{
-		lines = process.stdout.getWindowSize()[1];
+		lines = process.stdout.isTTY ? process.stdout.getWindowSize()[1] : 3;
 		
 		for (i=0; i<lines; i++)
 		{
@@ -22,7 +22,7 @@ function clear()
 		}
 	}
 	
-	// Reset cursur
+	// Reset cursor
 	stdout += "\x1B[0f";
 	
 	process.stdout.write(stdout);
